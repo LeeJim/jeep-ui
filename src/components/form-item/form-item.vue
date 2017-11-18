@@ -1,10 +1,12 @@
 <template>
   <div class="j-form-item" :style="itemStyle"
     :class="{
-      'label-left': jForm.labelPosition === 'left'
+      'label-left': jForm.labelPosition === 'left',
+      'is-required': required,
+      'is-error': validateError !== ''
     }">
     <div class="j-form-item__label" :style="labelStyle">
-      <label v-if="label || $slot.label" :for="labelFor">
+      <label v-if="label || $slots.label" :for="labelFor">
         <slot name="label">{{label}}</slot>
       </label>
     </div>
@@ -24,8 +26,21 @@ export default {
 
   name: 'j-form-item',
 
+  provide() {
+    return {
+      jFormItem: this
+    }
+  },
+
+  inject: {
+    jForm: {
+      default: null
+    }
+  },
+
   props: {
     label: String,
+    prop: String,
     required: {
       type: Boolean,
       default: true
@@ -57,7 +72,6 @@ export default {
     },
     labelStyle() {
       const ret = {}
-      const labelPosition = this.jForm.labelPosition
       const labelWidth = this.labelWidth || this.jForm.labelWidth
 
       if (labelWidth) {
@@ -83,14 +97,27 @@ export default {
     }
   },
 
-  inject: {
-    jForm: {
-      default: ''
-    }
-  },
-
   methods: {
 
+  },
+
+  created() {
+    if (this.prop) {
+      const that = this
+      this.jForm.errorData[this.prop] = ''
+      this.jForm.formData[this.prop] = ''
+      Object.defineProperty(this.jForm.errorData, this.prop, {
+        set(newVal) {
+          that.validateError = newVal.replace('[label]', that.label)
+        }
+      })
+    }
+    if (!this.required) {
+      this.jForm.rules[this.prop] = []
+    }
+    //  else {
+    //   this.required = false
+    // }
   }
 }
 </script>
@@ -104,10 +131,18 @@ export default {
     &:before, &:after {
       content: "";
       display: table;
+      clear: both;
     }
 
     &.label-left .j-form-item__label {
       text-align: left;
+    }
+
+    &.is-required .j-form-item__label {
+      &:before {
+        content: "*";
+        color: #9f3a38;
+      }
     }
 
     .j-form-item__label {
@@ -124,6 +159,13 @@ export default {
 
     .j-form-item__content {
       float: left;
+    }
+
+    .j-form-item__error {
+      margin-top: 4px;
+      color: #9f3a38;
+      text-align: left;
+      font-size: 12px;;
     }
   }
 </style>

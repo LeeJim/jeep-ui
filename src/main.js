@@ -7,12 +7,14 @@ import router from './router'
 import Input from './components/input'
 import FormItem from './components/form-item'
 import Form from './components/form'
+import Button from './components/button'
 
 Vue.config.productionTip = false
 
 Vue.component(Input.name, Input)
 Vue.component(FormItem.name, FormItem)
 Vue.component(Form.name, Form)
+Vue.component(Button.name, Button)
 
 /* eslint-disable no-new */
 new Vue({

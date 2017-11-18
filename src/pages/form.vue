@@ -1,12 +1,14 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div class="page-form">
     <j-form :formData="data" :errorData="error" ref="form" :rules="rules">
       <j-form-item label="name" prop="name">
         <j-input></j-input>
       </j-form-item>
       <j-form-item label="password" prop="password">
         <j-input type="password"></j-input>
+      </j-form-item>
+      <j-form-item label="address" prop="address" :required="false">
+        <j-input ></j-input>
       </j-form-item>
       <j-form-item>
         <j-button @click="submit">submit</j-button>
@@ -17,7 +19,6 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
   data() {
     return {
       msg: 'jui',
@@ -28,7 +29,8 @@ export default {
   },
   methods: {
     submit() {
-      this.$refs.form.validate(() => {
+      this.$refs.form.validate((data) => {
+        console.log(data)
       })
       setTimeout(() => {
         this.error.name = '已注册'
@@ -38,20 +40,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>

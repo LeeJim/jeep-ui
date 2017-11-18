@@ -1,6 +1,10 @@
 <template>
   <div class="j-input">
-    <input :type="type" :placeholder="placeholder" :readonly="readonly">
+    <input 
+      :placeholder="placeholder" 
+      :readonly="readonly" 
+      @input="handleInput" 
+      :value="jForm && jForm.formData && jForm.formData[jFormItem.prop] || value">
     <span></span>
   </div>
 </template>
@@ -10,8 +14,20 @@ export default {
   name: 'j-input',
 
   data() {
-    return {}
+    return {
+      value: ''
+    }
   },
+
+  inject: {
+    jForm: {
+      default: null
+    },
+    jFormItem: {
+      default: null
+    }
+  },
+
   props: {
     placeholder: String,
     type: {
@@ -21,13 +37,34 @@ export default {
         return ['password', 'tel', 'number', 'email', 'date', 'text'].indexOf(type) > -1
       }
     },
-    password: Boolean,
     readonly: Boolean
+  },
+
+  methods: {
+    handleInput(event) {
+      const value = event.target.value
+      if (this.jForm && this.jForm.formData) {
+        this.jForm.formData[this.jFormItem.prop] = value
+      }
+      this.$emit('value', value)
+    }
+  },
+
+  created() {
+
   }
 }
 </script>
 
 <style lang="less">
+
+  .is-error .j-input input {
+    background-color: #fff6f6;
+    border-color: #e0b4b4;
+    color: #9f3a38;
+    box-shadow: none;
+  }
+
   .j-input {
     position: relative;
     font-weight: 400;
@@ -35,13 +72,6 @@ export default {
     display: inline-flex;
     color: rgba(0,0,0,.87);
     font-size: 1em;
-
-    &.error {
-      background-color: #fff6f6;
-      border-color: #e0b4b4;
-      color: #9f3a38;
-      box-shadow: none;
-    }
 
     &.disabled {
       opacity: .45;
