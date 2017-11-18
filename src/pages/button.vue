@@ -1,6 +1,6 @@
 <template>
   <div class="page-button">
-    <h2>按钮 button</h2>
+    <h2>Button 按钮</h2>
     <p>常规的操作按钮</p>
 
     <h3>正常状态</h3>

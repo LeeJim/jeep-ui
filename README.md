@@ -1,5 +1,9 @@
 # jui
-practical  UI for Vue.js
+Practical  UI for Vue.js
+
+Inspired by [Semantic-ui](http://http://semantic-ui.com/) and [Element-ui](http://element.eleme.io/)
+
+![image](http://7xnh42.com1.z0.glb.clouddn.com/jui-logo.png)
 
 # 为什么做这个UI
 
@@ -14,6 +18,49 @@ practical  UI for Vue.js
 然后，完善form相关的组件。包含radio, checkbox, select switch, DatePicker
 
 最后就是其他类的组件了。
+
+# 表单用法
+
+template部分：
+
+```html
+<j-form :formData="data" :errorData="error" ref="form" :rules="rules">
+
+  <j-form-item label="账号" prop="name">
+    <j-input></j-input>
+  </j-form-item>
+  
+  <j-form-item label="密码" prop="password">
+    <j-input type="password"></j-input>
+  </j-form-item>
+  
+  <j-form-item>
+    <j-button @click="submit">submit</j-button>
+  </j-form-item>
+  
+</j-form>
+```
+
+JavaScript逻辑部分：
+
+```js
+export default {
+  data() {
+    return {
+      data: {},
+      rules: {},
+      error: {}
+    }
+  },
+  methods: {
+    submit() {
+      this.$refs.form.validate((data) => {
+        console.log(data)
+      })
+    }
+  }
+}
+```
 
 # 组件
 

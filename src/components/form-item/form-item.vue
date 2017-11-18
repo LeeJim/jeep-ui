@@ -1,5 +1,7 @@
 <template>
-  <div class="j-form-item" :style="itemStyle"
+  <div
+    class="j-form-item" 
+    :style="itemStyle"
     :class="{
       'label-left': jForm.labelPosition === 'left',
       'is-required': required,

@@ -1,10 +1,10 @@
 <template>
   <div class="page-form">
     <j-form :formData="data" :errorData="error" ref="form" :rules="rules">
-      <j-form-item label="name" prop="name">
+      <j-form-item label="账号" prop="username">
         <j-input></j-input>
       </j-form-item>
-      <j-form-item label="password" prop="password">
+      <j-form-item label="密码" prop="password">
         <j-input type="password"></j-input>
       </j-form-item>
       <j-form-item label="address" prop="address" :required="false">
@@ -33,7 +33,7 @@ export default {
         console.log(data)
       })
       setTimeout(() => {
-        this.error.name = '已注册'
+        this.error.username = '已注册'
       }, 2000)
     }
   }
