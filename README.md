@@ -1,7 +1,7 @@
 # jui
 Practical  UI for Vue.js
 
-Inspired by [Semantic-ui](http://http://semantic-ui.com/) and [Element-ui](http://element.eleme.io/)
+Inspired by [Semantic-ui](http://semantic-ui.com/) and [Element-ui](http://element.eleme.io/)
 
 ![image](http://7xnh42.com1.z0.glb.clouddn.com/jui-logo.png)
 

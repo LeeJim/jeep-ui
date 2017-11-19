@@ -164,6 +164,7 @@ export default {
     }
 
     .j-form-item__error {
+      padding-left: 6px;
       margin-top: 4px;
       color: #9f3a38;
       text-align: left;
