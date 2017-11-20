@@ -1,8 +1,10 @@
-var fs = require('fs')
-var path = require('path')
+const fs = require('fs')
+const path = require('path')
+const upperCamelCase = require('uppercamelcase');
+
 
 const componentName = process.argv[2]
-const upperComponentName = componentName.replace(/^([a-zA-Z])/, (match) => match.toUpperCase())
+const upperComponentName = upperCamelCase(componentName)
 const distPath = path.join(__dirname, '..', 'src', 'components')
 
 fs.mkdirSync(path.resolve(distPath, componentName))

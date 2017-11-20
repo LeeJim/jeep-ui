@@ -26,6 +26,7 @@
   "homepage": "https://github.com/LeeJim/jui#readme",
   "dependencies": {
     "semantic-ui": "^2.2.13",
+    "uppercamelcase": "^3.0.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
