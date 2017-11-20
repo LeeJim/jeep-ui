@@ -38,10 +38,11 @@ export default {
     validate(callback) {
       const rules = this.rules
       const keys = Object.keys(this.formData)
+      const state = true
 
       keys.forEach((key) => {
         if (!rules[key]) {
-          if (this.formData[key] === '') {
+          if (this.formData[key] === '' || this.formData[key].length === 0) {
             this.errorData[key] = this.errorTemplate
           } else {
             this.errorData[key] = ''
@@ -55,14 +56,15 @@ export default {
             const lengthOfRule = rule.length
             if (lengthOfRule < 1) return
             rule.forEach((test) => {
-              console.log(test)
+              test()
             })
           } else {
             // rule is object
           }
         }
       })
-      callback(this.formData)
+
+      callback(state, this.formData)
     }
   }
 }

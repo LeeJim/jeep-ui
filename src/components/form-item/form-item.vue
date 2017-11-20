@@ -4,7 +4,7 @@
     :style="itemStyle"
     :class="{
       'label-left': jForm.labelPosition === 'left',
-      'is-required': required,
+      'is-required': inRequired,
       'is-error': validateError !== ''
     }">
     <div class="j-form-item__label" :style="labelStyle">
@@ -95,14 +95,14 @@ export default {
   data() {
     return {
       validateError: '',
-      labelFor: ''
+      labelFor: '',
+      inRequired: true
     }
   },
 
   methods: {
 
   },
-
   created() {
     if (this.prop) {
       const that = this
@@ -113,22 +113,21 @@ export default {
           that.validateError = newVal.replace('[label]', that.label)
         }
       })
+    } else {
+      this.inRequired = false
     }
     if (!this.required) {
+      this.inRequired = false
       this.jForm.rules[this.prop] = []
     }
-    //  else {
-    //   this.required = false
-    // }
   }
 }
 </script>
 
 <style lang="less">
   .j-form-item {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 22px;
+    margin: 0 auto 22px;
+    line-height: 32px;
 
     &:before, &:after {
       content: "";
@@ -154,13 +153,13 @@ export default {
       vertical-align: middle;
       font-size: 14px;
       color: #5a5e66;
-      line-height: 32px;
       padding-right: 12px;
       box-sizing: border-box;
     }
 
     .j-form-item__content {
       float: left;
+      text-align: left;
     }
 
     .j-form-item__error {

@@ -32,7 +32,6 @@ export default {
 
   data() {
     return {
-      
     }
   },
 
@@ -78,6 +77,7 @@ export default {
       if (this.jForm && this.jForm.formData) {
         this.jForm.formData[this.jFormItem.prop] = value
       }
+      this.clearError()
       this.$emit('value', event)
     },
     handleBlur(event) {
@@ -85,7 +85,13 @@ export default {
     },
     handleChange(event) {
       const value = event.target.value
+      this.clearError()
       this.$emit('change', value)
+    },
+    clearError() {
+      if (this.jForm && this.jForm.errorData) {
+        this.jForm.errorData[this.jFormItem.prop] = ''
+      }
     }
   },
 
