@@ -5,7 +5,7 @@
       v-for="opt in options"
       :key="opt.value"
       :value="opt.value"
-      @value="handleToggle($event, opt)" 
+      @input="handleToggle($event, opt)" 
     >
       {{opt.label}}
     </j-checkbox>
@@ -44,10 +44,10 @@
       handleToggle(select, item) {
         if (select) {
           this.currentSelected.push(item.value)
-          this.$emit('value', item.value)
         } else {
           this.currentSelected.splice(this.currentSelected.indexOf(item.value), 1)
         }
+        this.$emit('input', this.currentSelected)
         this.setFormValue([...this.currentSelected])
         this.clearError()
       }

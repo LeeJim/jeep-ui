@@ -1,6 +1,7 @@
 <template>
   <button 
     @click="handleClick"
+    :type="nativeType"
     :class="['j-button', `is-${type}`,
       plain ? 'is-plain' : '',
       loading ? 'is-loading' : '',
@@ -23,7 +24,11 @@ export default {
     type: String,
     plain: Boolean,
     disabled: Boolean,
-    loading: Boolean
+    loading: Boolean,
+    nativeType: {
+      type: String,
+      default: 'button'
+    }
   },
 
   methods: {

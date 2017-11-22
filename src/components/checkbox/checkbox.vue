@@ -23,8 +23,7 @@
     props: {
       name: String, // native
       readonly: Boolean,
-      checked: Boolean,
-      value: [String, Number]
+      checked: Boolean
     },
 
     methods: {
@@ -33,14 +32,14 @@
           return
         }
         this.inChecked = !this.inChecked
-        this.$emit('value', this.inChecked)
+        this.$emit('input', this.inChecked)
       }
     },
 
     created() {
+      this.$emit('input', this.checked)
       if (this.checked) {
         this.inChecked = this.checked
-        this.$emit('value', this.value)
       }
     }
   }

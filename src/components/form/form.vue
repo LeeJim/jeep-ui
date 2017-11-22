@@ -40,11 +40,24 @@
       errorData: Object
     },
     methods: {
+      /* eslint-disable consistent-return */
       validate(callback) {
         const rules = this.rules
         const keys = Object.keys(this.formData)
         let state = true
         let count = keys.length
+
+        let promise
+        // if no callback, return promise
+        if (typeof callback !== 'function' && window.Promise) {
+          /* eslint-disable */
+          promise = new window.Promise((resolve, reject) => {
+            callback = function (valid) {
+              valid ? resolve(valid) : reject(valid)
+            }
+          })
+        }
+
         keys.forEach((key) => {
           const rule = rules[key]
           const descriptor = { [key]: rule }
@@ -58,8 +71,11 @@
               callback(state, this.formData)
             }
           })
-          // }
         })
+
+        if (promise) {
+          return promise
+        }
       },
 
       initialRule() {

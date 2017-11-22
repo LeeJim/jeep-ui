@@ -34,8 +34,7 @@
     },
 
     props: {
-      checked: Boolean,
-      value: String
+      checked: Boolean
     },
 
     methods: {
@@ -45,7 +44,7 @@
         }
         const state = !this.inChecked
         this.inChecked = state
-        this.$emit('value', state)
+        this.$emit('input', state)
         this.setFormValue(state)
         this.clearError()
       }
@@ -56,6 +55,7 @@
         this.inChecked = this.checked
       }
       this.setFormValue(this.inChecked)
+      this.$emit('input', this.checked)
     }
   }
 </script>
@@ -89,6 +89,7 @@
       padding-left: 5em;
       padding-right: 8px;
       outline: 0;
+      line-height: 24px;
 
       &:before, &:after {
         box-sizing: border-box;

@@ -37,13 +37,14 @@
     },
 
     props: {
-      options: Array
+      options: Array,
+      value: [String, Number]
     },
 
     methods: {
       handleToggle(inValue, item) {
         this.currentSelected = item.label
-        this.$emit('value', item.value)
+        this.$emit('input', item.value)
         this.setFormValue(item.value)
         this.clearError()
       }
@@ -55,6 +56,7 @@
         if (checkedItem) {
           this.currentSelected = checkedItem.label
           this.setFormValue(checkedItem.value)
+          this.$emit('input', checkedItem.value)
         }
       }
     }
