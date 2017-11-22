@@ -10,6 +10,8 @@
 </template>
 
 <script>
+  import formMixin from '@/utils/mixins/form'
+
   export default {
 
     name: 'j-toggle',
@@ -22,6 +24,8 @@
         default: null
       }
     },
+
+    mixins: [formMixin],
 
     data() {
       return {
@@ -42,9 +46,8 @@
         const state = !this.inChecked
         this.inChecked = state
         this.$emit('value', state)
-        if (this.jForm && this.jForm.formData) {
-          this.jForm.formData[this.jFormItem.prop] = state
-        }
+        this.setFormValue(state)
+        this.clearError()
       }
     },
 
@@ -52,6 +55,7 @@
       if ('checked' in this) {
         this.inChecked = this.checked
       }
+      this.setFormValue(this.inChecked)
     }
   }
 </script>

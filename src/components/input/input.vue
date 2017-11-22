@@ -27,78 +27,75 @@
 </template>
 
 <script>
-export default {
-  name: 'j-input',
+  import formMixin from '@/utils/mixins/form'
+  
+  export default {
+    name: 'j-input',
 
-  data() {
-    return {
-    }
-  },
-
-  inject: {
-    jForm: {
-      default: null
-    },
-    jFormItem: {
-      default: null
-    }
-  },
-
-  props: {
-    type: {
-      type: String,
-      default: 'text',
-      validator(type) {
-        return ['password', 'tel', 'number', 'email', 'date', 'text'].indexOf(type) > -1
+    data() {
+      return {
       }
     },
-    placeholder: String, // native
-    name: String, // native
-    max: Number, // native
-    min: Number, // native
-    step: Number, // native
-    autofocus: Boolean, // native
-    form: String, // native
-    readonly: Boolean, // native
-    disabled: Boolean, // native
-    autoComplete: Boolean, // native
-    loading: Boolean,
-    prefixIcon: String,
-    suffixIcon: String,
-    value: [String, Number],
-    blur: Function,
-    focus: Function,
-    change: Function
-  },
 
-  methods: {
-    handleInput(event) {
-      const value = event.target.value
-      if (this.jForm && this.jForm.formData) {
-        this.jForm.formData[this.jFormItem.prop] = value
+    inject: {
+      jForm: {
+        default: null
+      },
+      jFormItem: {
+        default: null
       }
-      this.clearError()
-      this.$emit('value', event)
     },
-    handleBlur(event) {
-      this.$emit('blur', event)
+
+    mixins: [formMixin],
+
+    props: {
+      type: {
+        type: String,
+        default: 'text',
+        validator(type) {
+          return ['password', 'tel', 'number', 'email', 'date', 'text'].indexOf(type) > -1
+        }
+      },
+      placeholder: String, // native
+      name: String, // native
+      max: Number, // native
+      min: Number, // native
+      step: Number, // native
+      autofocus: Boolean, // native
+      form: String, // native
+      readonly: Boolean, // native
+      disabled: Boolean, // native
+      autoComplete: Boolean, // native
+      loading: Boolean,
+      prefixIcon: String,
+      suffixIcon: String,
+      value: [String, Number],
+      blur: Function,
+      focus: Function,
+      change: Function
     },
-    handleChange(event) {
-      const value = event.target.value
-      this.clearError()
-      this.$emit('change', value)
-    },
-    clearError() {
-      if (this.jForm && this.jForm.errorData) {
-        this.jForm.errorData[this.jFormItem.prop] = ''
+
+    methods: {
+      handleInput(event) {
+        const value = event.target.value
+        this.setFormValue(value)
+        this.clearError()
+        this.$emit('value', event)
+      },
+      handleBlur(event) {
+        this.$emit('blur', event)
+      },
+      handleChange(event) {
+        const value = event.target.value
+        this.clearError()
+        this.$emit('change', value)
       }
+    },
+
+    created() {
+
     }
-  },
-
-  created() {
-
   }
-}
 </script>
 
 <style lang="less">

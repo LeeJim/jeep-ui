@@ -5,69 +5,75 @@
 </template>
 
 <script>
-export default {
-  name: 'j-form',
+  import Schema from 'async-validator'
+  import formMixin from '@/utils/mixins/form'
 
-  data() {
-    return {}
-  },
+  export default {
+    name: 'j-form',
 
-  provide() {
-    return {
-      jForm: this
-    }
-  },
-
-  props: {
-    errorTemplate: {
-      type: String,
-      default: '[label]不能为空'
+    data() {
+      return {}
     },
-    labelPosition: {
-      type: String,
-      default: 'right'
-    },
-    formData: {
-      type: Object,
-      required: true
-    },
-    rules: Object,
-    errorData: Object
-  },
-  methods: {
-    validate(callback) {
-      const rules = this.rules
-      const keys = Object.keys(this.formData)
-      const state = true
 
-      keys.forEach((key) => {
-        if (!rules[key]) {
-          if (this.formData[key] === '' || this.formData[key].length === 0) {
-            this.errorData[key] = this.errorTemplate
-          } else {
-            this.errorData[key] = ''
-          }
-        } else {
-          // 校验rule
+    provide() {
+      return {
+        jForm: this
+      }
+    },
+
+    mixins: [formMixin],
+
+    props: {
+      errorTemplate: {
+        type: String,
+        default: '[label]不能为空'
+      },
+      labelPosition: {
+        type: String,
+        default: 'right'
+      },
+      formData: {
+        type: Object,
+        required: true
+      },
+      rules: Object,
+      errorData: Object
+    },
+    methods: {
+      validate(callback) {
+        const rules = this.rules
+        const keys = Object.keys(this.formData)
+        let state = true
+        let count = keys.length
+        keys.forEach((key) => {
           const rule = rules[key]
+          const descriptor = { [key]: rule }
+          const validator = new Schema(descriptor)
+          validator.validate({ [key]: this.formData[key] }, (errors) => {
+            if (errors) {
+              state = false
+              this.errorData[key] = errors[0].message
+            }
+            if (--count === 0) {
+              callback(state, this.formData)
+            }
+          })
+          // }
+        })
+      },
 
-          if (typeof rule !== 'object') return
-          if (Array.isArray(rule)) {
-            const lengthOfRule = rule.length
-            if (lengthOfRule < 1) return
-            rule.forEach((test) => {
-              test()
-            })
-          } else {
-            // rule is object
+      initialRule() {
+        const rules = { ...this.rules }
+        const keys = Object.keys(this.formData)
+        keys.forEach((key) => {
+          if (!this.rules[key]) {
+            rules[key] = { required: true, message: this.errorTemplate }
           }
-        }
-      })
-
-      callback(state, this.formData)
+        })
+        return rules
+      }
     }
   }
-}
 </script>
 
 <style lang="less">

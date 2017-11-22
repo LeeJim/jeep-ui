@@ -13,6 +13,8 @@
 </template>
 
 <script>
+  import formMixin from '@/utils/mixins/form'
+  
   export default {
 
     name: 'j-checkbox-group',
@@ -25,6 +27,8 @@
         default: null
       }
     },
+
+    mixins: [formMixin],
 
     props: {
       options: Array
@@ -44,9 +48,8 @@
         } else {
           this.currentSelected.splice(this.currentSelected.indexOf(item.value), 1)
         }
-        if (this.jForm && this.jForm.formData) {
-          this.jForm.formData[this.jFormItem.prop] = [...this.currentSelected]
-        }
+        this.setFormValue([...this.currentSelected])
+        this.clearError()
       }
     },
 
@@ -58,9 +61,7 @@
           }
           return box
         }, [])
-        if (this.jForm && this.jForm.formData) {
-          this.jForm.formData[this.jFormItem.prop] = [...this.currentSelected]
-        }
+        this.setFormValue([...this.currentSelected])
       }
     }
   }

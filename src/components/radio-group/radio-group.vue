@@ -13,6 +13,8 @@
 </template>
 
 <script>
+  import formMixin from '@/utils/mixins/form'
+  
   export default {
 
     name: 'j-radio-group',
@@ -25,6 +27,8 @@
         default: null
       }
     },
+
+    mixins: [formMixin],
 
     data() {
       return {
@@ -40,9 +44,8 @@
       handleToggle(inValue, item) {
         this.currentSelected = item.label
         this.$emit('value', item.value)
-        if (this.jForm && this.jForm.formData) {
-          this.jForm.formData[this.jFormItem.prop] = item.value
-        }
+        this.setFormValue(item.value)
+        this.clearError()
       }
     },
 
@@ -51,9 +54,7 @@
         const checkedItem = this.options.find(item => !!item.checked)
         if (checkedItem) {
           this.currentSelected = checkedItem.label
-          if (this.jForm && this.jForm.formData) {
-            this.jForm.formData[this.jFormItem.prop] = checkedItem.value
-          }
+          this.setFormValue(checkedItem.value)
         }
       }
     }

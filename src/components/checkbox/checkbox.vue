@@ -47,7 +47,7 @@
 </script>
 
 <style lang="less">
-  @import "../../assets/less/font-awesome/font-awesome.less";
+  @import "../../assets/less/variables.less";
   .j-checkbox {
     position: relative;
     display: inline-block;
@@ -55,11 +55,11 @@
     outline: 0;
     vertical-align: baseline;
     font-style: normal;
-    min-height: 17px;
-    font-size: 1rem;
-    line-height: 17px;
-    min-width: 17px;
-    margin-left: 8px;
+    min-height: 16px;
+    font-size: 14px;
+    line-height: 16px;
+    min-width: 16px;
+    margin-right: 8px;
     
     > input {
       position: absolute;
@@ -75,28 +75,48 @@
       padding-right: 8px;
       outline: 0;
 
+      .is-checked& {
+        color: @blue;
+      }
+
       &:before, &:after {
         box-sizing: border-box;
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 17px;
-        height: 17px;
         content: '';
-        border-radius: 3px;
+      }
+
+      .is-checked&:before {
+        background-color: @blue;
+        border-color: @blue;
       }
 
       &:before {
+        top: 0;
+        left: 0;
+        width: 16px;
+        height: 16px;
         background: #fff;
-        border: 1px solid #d4d4d5;
+        border: 1px solid #fff;
         border-color: rgba(34,36,38,.35);
+        border-radius: 3px;
         transition: border .1s ease,opacity .1s ease,transform .1s ease,box-shadow .1s ease,-webkit-transform .1s ease;
       }
 
+      &:after {
+        top: 3px;
+        left: 6px;
+        width: 4px;
+        height: 8px;
+        border: 1px solid #fff;
+        border-top: 0;
+        border-left: 0;
+        transform-origin: center;
+        transform: rotate(45deg) scaleY(0);
+        transition: transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
+      }
+
       .is-checked&:after {
-        content: "\f00c";
-        font-family: FontAwesome;
-        font-size: 17px;
+        transform: rotate(45deg) scaleY(1);
       }
     }
   }

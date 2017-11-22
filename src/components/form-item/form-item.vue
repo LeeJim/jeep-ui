@@ -24,104 +24,119 @@
 </template>
 
 <script>
-export default {
+  import util from '@/utils/util'
 
-  name: 'j-form-item',
+  export default {
 
-  provide() {
-    return {
-      jFormItem: this
-    }
-  },
+    name: 'j-form-item',
 
-  inject: {
-    jForm: {
-      default: null
-    }
-  },
-
-  props: {
-    label: String,
-    prop: String,
-    required: {
-      type: Boolean,
-      default: true
-    },
-    showMessage: {
-      type: Boolean,
-      default: true
-    },
-    type: {
-      type: String,
-      default: 'string'
-    },
-    labelWidth: {
-      type: String,
-      default: '80px'
-    },
-    contentWidth: {
-      type: String,
-      default: '160px'
-    }
-  },
-
-  computed: {
-    itemStyle() {
-      const ret = {}
-
-      ret.width = `${parseInt(this.labelWidth, 10) + parseInt(this.contentWidth, 10)}px`
-      return ret
-    },
-    labelStyle() {
-      const ret = {}
-      const labelWidth = this.labelWidth || this.jForm.labelWidth
-
-      if (labelWidth) {
-        ret.width = labelWidth
+    provide() {
+      return {
+        jFormItem: this
       }
-      return ret
     },
-    contentStyle() {
-      const ret = {}
-      const contentWidth = this.contentWidth || this.jForm.contentWidth
 
-      if (contentWidth) {
-        ret.width = contentWidth
+    inject: {
+      jForm: {
+        default: null
       }
-      return ret
-    }
-  },
+    },
 
-  data() {
-    return {
-      validateError: '',
-      labelFor: '',
-      inRequired: true
-    }
-  },
+    props: {
+      label: String,
+      prop: String,
+      required: {
+        type: Boolean,
+        default: true
+      },
+      showMessage: {
+        type: Boolean,
+        default: true
+      },
+      type: {
+        type: String,
+        default: 'string'
+      },
+      labelWidth: {
+        type: String,
+        default: '80px'
+      },
+      contentWidth: {
+        type: String,
+        default: '160px'
+      }
+    },
 
-  methods: {
+    computed: {
+      itemStyle() {
+        const ret = {}
 
-  },
-  created() {
-    if (this.prop) {
-      const that = this
-      this.jForm.errorData[this.prop] = ''
-      this.jForm.formData[this.prop] = ''
-      Object.defineProperty(this.jForm.errorData, this.prop, {
-        set(newVal) {
-          that.validateError = newVal.replace('[label]', that.label)
+        ret.width = `${parseInt(this.labelWidth, 10) + parseInt(this.contentWidth, 10)}px`
+        return ret
+      },
+      labelStyle() {
+        const ret = {}
+        const labelWidth = this.labelWidth || this.jForm.labelWidth
+
+        if (labelWidth) {
+          ret.width = labelWidth
         }
-      })
-    } else {
-      this.inRequired = false
-    }
-    if (!this.required) {
-      this.inRequired = false
-      this.jForm.rules[this.prop] = []
+        return ret
+      },
+      contentStyle() {
+        const ret = {}
+        const contentWidth = this.contentWidth || this.jForm.contentWidth
+
+        if (contentWidth) {
+          ret.width = contentWidth
+        }
+        return ret
+      }
+    },
+
+    data() {
+      return {
+        validateError: '',
+        labelFor: '',
+        inRequired: true
+      }
+    },
+
+    methods: {
+
+    },
+    created() {
+      if (this.prop) {
+        const prop = this.prop
+        const that = this
+        this.jForm.errorData[prop] = ''
+        this.jForm.formData[prop] = ''
+        Object.defineProperty(this.jForm.errorData, prop, {
+          set(newVal) {
+            that.validateError = newVal.replace('[label]', that.label)
+          }
+        })
+        if (this.required) {
+          const rule = this.jForm.rules[prop]
+          const ruleOfRequired = { required: true, message: this.jForm.errorTemplate }
+          if (util.isEmpty(rule)) {
+            this.jForm.rules[prop] = ruleOfRequired
+          } else if (Array.isArray(rule)) {
+            this.jForm.rules[prop].push(ruleOfRequired)
+          } else if (typeof rule === 'object') {
+            this.jForm.rules[prop] = [rule, ruleOfRequired]
+          }
+        }
+      } else {
+        this.inRequired = false
+      }
+
+      if (!this.required) {
+        this.inRequired = false
+        // this.jForm.rules[this.prop] = []
+      }
     }
   }
-}
 </script>
 
 <style lang="less">

@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/LeeJim/jui#readme",
   "dependencies": {
+    "async-validator": "^1.8.1",
+    "highlight.js": "^9.12.0",
     "semantic-ui": "^2.2.13",
     "uppercamelcase": "^3.0.0",
     "vue": "^2.5.2",

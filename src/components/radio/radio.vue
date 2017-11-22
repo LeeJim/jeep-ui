@@ -52,6 +52,7 @@
 </script>
 
 <style lang="less">
+  @import "../../assets/less/variables.less";
   .j-radio {
     position: relative;
     display: inline-block;
@@ -60,7 +61,7 @@
     vertical-align: baseline;
     font-style: normal;
     min-height: 17px;
-    font-size: 1rem;
+    font-size: 14px;
     line-height: 17px;
     min-width: 17px;
     margin-right: 8px;
@@ -79,6 +80,10 @@
       padding-right: 8px;
       outline: 0;
 
+      .is-checked& {
+        color: @blue;
+      }
+
       &:before, &:after {
         box-sizing: border-box;
         position: absolute;
@@ -89,20 +94,25 @@
       &:before {
         top: 0;
         left: 0;
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
         background: #fff;
         border: 1px solid #d4d4d5;
         border-color: rgba(34,36,38,.35);
         transition: border .1s ease,opacity .1s ease,transform .1s ease,box-shadow .1s ease,-webkit-transform .1s ease;
       }
 
+      .is-checked&:before {
+        background-color: @blue;
+        border-color: @blue;
+      }
+
       .is-checked&:after {
-        top: 4px;
-        left: 4px;
-        width: 8px;
-        height: 8px;
-        background-color: #000;
+        top: 5px;
+        left: 5px;
+        width: 4px;
+        height: 4px;
+        background-color: #fff;
       }
     }
   }
