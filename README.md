@@ -9,15 +9,33 @@ Inspired by [Semantic-ui](http://semantic-ui.com/) and [Element-ui](http://eleme
 
 通常，开发Vue.js的项目时，UI框架首选是 饿了么的Element UI。
 
-其中，表单这一块经常用，而Element UI的表单无比难用，特别繁琐。这就是出发点。
+其中，表单这一块经常用，而Element UI的表单**太繁琐**，这就是出发点。
+
+为了方便使用，最终表单的校验方式同样使用了[async-validator](https://github.com/yiminghe/async-validator)
 
 # 项目规划
 
-首先，form相关组件。包含form, form-item, input, button
+第一阶段：完成组件：
 
-然后，完善form相关的组件。包含radio, checkbox, select switch, DatePicker
+- `Button 按钮`
+- `Input 输入框`
+- `Radio 单选框`
+- `Checkbox 复选框`
+- `Toggle 开关`
+- `Form 表单`
 
-最后就是其他类的组件了。
+第二阶段：完善Form相关的组件，包含：
+
+- `DropDown 选择器`
+- `DatePicker 日期选择器`
+
+第三阶段：继续完善其他组件： 
+
+- `Upload 上传`
+- `Loading 加载状态`
+- `Modal 弹框`
+
+(...未完待续)
 
 # 表单用法
 
