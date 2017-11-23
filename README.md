@@ -1,9 +1,9 @@
 # jui
-Practical  UI for Vue.js
+Practical UI for Vue.js
 
 Inspired by [Semantic-ui](http://semantic-ui.com/) and [Element-ui](http://element.eleme.io/)
 
-![image](http://7xnh42.com1.z0.glb.clouddn.com/jui-logo.png)
+![image](http://7xnh42.com1.z0.glb.clouddn.com/lamp.png?imageMogr2/thumbnail/640x200>/blur/1x0/quality/75|imageslim)
 
 # 为什么做这个UI
 
@@ -13,9 +13,17 @@ Inspired by [Semantic-ui](http://semantic-ui.com/) and [Element-ui](http://eleme
 
 为了方便使用，最终表单的校验方式同样使用了[async-validator](https://github.com/yiminghe/async-validator)
 
+# 安装
+
+由于`jui`这个名字已经被注册，所以在npm注册的名字是`jim-ui`，
+
+```
+npm install jim-ui
+```
+
 # 项目规划
 
-第一阶段：完成组件：
+第一阶段：完成组件：(2017.11.22已完成)
 
 - `Button 按钮`
 - `Input 输入框`
