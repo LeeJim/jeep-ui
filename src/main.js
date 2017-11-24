@@ -14,6 +14,7 @@ import RadioGroup from './components/radio-group'
 import Checkbox from './components/checkbox'
 import CheckboxGroup from './components/checkbox-group'
 import Toggle from './components/toggle'
+import Loading from './components/loading'
 
 Vue.config.productionTip = false
 
@@ -26,6 +27,7 @@ Vue.component(RadioGroup.name, RadioGroup)
 Vue.component(Checkbox.name, Checkbox)
 Vue.component(CheckboxGroup.name, CheckboxGroup)
 Vue.component(Toggle.name, Toggle)
+Vue.component(Loading.name, Loading)
 
 /* eslint-disable no-new */
 new Vue({

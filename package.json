@@ -9,7 +9,8 @@
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js",
-    "lib": "node build/jui.js"
+    "lib": "node build/jui.js",
+    "create": "node build/create.js"
   },
   "files": [
     "lib",

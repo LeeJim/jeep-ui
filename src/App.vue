@@ -22,6 +22,9 @@
       <li>
         <router-link :to="{ path: '/form' }">Form 表单</router-link>
       </li>
+      <li>
+        <router-link :to="{ path: '/loading' }">Loading 加载</router-link>
+      </li>
     </ul>
     <iframe src="https://ghbtns.com/github-btn.html?user=leejim&repo=jui&type=star&count=true" frameborder="0" scrolling="0" width="80px" height="20px" class="button-star"></iframe>
     <router-view />

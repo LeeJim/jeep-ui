@@ -8,6 +8,7 @@ import Form from '../pages/form'
 import Radio from '../pages/radio'
 import CheckBox from '../pages/checkbox'
 import Toggle from '../pages/toggle'
+import Loading from '../pages/loading'
 
 Vue.use(Router)
 
@@ -41,5 +42,9 @@ export default new Router({
     path: '/toggle',
     name: 'toggle page',
     component: Toggle
+  }, {
+    path: '/loading',
+    name: 'loading page',
+    component: Loading
   }]
 })
