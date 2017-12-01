@@ -60,7 +60,7 @@
         example8: '<j-loading  :loading="loading1" type="scaleout"></j-loading>',
         example9: '<j-loading  :loading="loading1" type="bounce"></j-loading>',
         example10: '<j-loading  :loading="loading1" type="sk-circle"></j-loading>',
-        example11: '<j-loading  :loading="loading1" type="sk-fading-circle"></j-loading>',
+        example11: '<j-loading  :loading="loading1" type="sk-fading-circle"></j-loading>'
       }
     },
 

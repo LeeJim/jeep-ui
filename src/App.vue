@@ -4,26 +4,8 @@
       <img src="http://7xnh42.com1.z0.glb.clouddn.com/lamp.png" alt="jui-logo">
     </router-link>
     <ul class="header">
-      <li>
-        <router-link :to="{ path: '/button' }">Button 按钮</router-link>
-      </li>
-      <li>
-        <router-link :to="{ path: '/input' }">Input 输入框</router-link>
-      </li>
-      <li>
-        <router-link :to="{ path: '/radio' }">Radio 单选框</router-link>
-      </li>
-      <li>
-        <router-link :to="{ path: '/checkbox' }">CheckBox 复选框</router-link>
-      </li>
-      <li>
-        <router-link :to="{ path: '/toggle' }">Toggle 开关</router-link>
-      </li>
-      <li>
-        <router-link :to="{ path: '/form' }">Form 表单</router-link>
-      </li>
-      <li>
-        <router-link :to="{ path: '/loading' }">Loading 加载</router-link>
+      <li v-for="item in links" :key="item.url">
+        <router-link :to="{ path: '/' + item.url }">{{item.label}}</router-link>
       </li>
     </ul>
     <iframe src="https://ghbtns.com/github-btn.html?user=leejim&repo=jui&type=star&count=true" frameborder="0" scrolling="0" width="80px" height="20px" class="button-star"></iframe>
@@ -33,7 +15,37 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+
+  data() {
+    return {
+      links: [{
+        url: 'button',
+        label: 'Button 按钮'
+      }, {
+        url: 'input',
+        label: 'Input 输入框'
+      }, {
+        url: 'radio',
+        label: 'Radio 单选框'
+      }, {
+        url: 'checkbox',
+        label: 'CheckBox 复选框'
+      }, {
+        url: 'toggle',
+        label: 'Toggle 开关'
+      }, {
+        url: 'form',
+        label: 'Form 表单'
+      }, {
+        url: 'loading',
+        label: 'Loading 加载'
+      }, {
+        url: 'dropdown',
+        label: 'Dropdown 选择框'
+      }]
+    }
+  }
 }
 </script>
 

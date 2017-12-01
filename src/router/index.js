@@ -9,6 +9,7 @@ import Radio from '../pages/radio'
 import CheckBox from '../pages/checkbox'
 import Toggle from '../pages/toggle'
 import Loading from '../pages/loading'
+import Dropdown from '../pages/dropdown'
 
 Vue.use(Router)
 
@@ -46,5 +47,9 @@ export default new Router({
     path: '/loading',
     name: 'loading page',
     component: Loading
+  }, {
+    path: '/dropdown',
+    name: 'dropdown page',
+    component: Dropdown
   }]
 })

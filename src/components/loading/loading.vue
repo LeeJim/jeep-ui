@@ -80,10 +80,6 @@
         type: Boolean,
         default: false
       }
-    },
-
-    created() {
-      console.log(!this.loading)
     }
   }
 </script>
