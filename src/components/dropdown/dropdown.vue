@@ -1,24 +1,27 @@
 
 <template>
   <div class="j-dropdown" tabindex="0"
-    @focus="handleFocus"
-    @blur="handleBlur"
+    ref="dropdown"
     @click="handleClick"
     :class="{
       'is-active': active
     }">
-    <input type="hidden" :name="name">
+    <input
+      ref="input"
+      type="hidden" 
+      :name="name" >
     <div 
       class="text" 
-      :class="{ default: selected === ''}"
+      :class="{ default: selected === '' }"
     >
       {{selected !== '' && options[selected].label || defaultText || '请选择'}}
     </div>
     <i class="fa fa-caret-down" aria-hidden="true"></i>
-    <ul class="menu" tabindex="-1" @click="handleItemClick">
+    <ul class="menu" tabindex="-1" @click.stop="handleItemClick">
       <li
         v-for="(opt, index) in options"
         :key="opt.value"
+        :data-index="index"
         :data-value="opt.value"
         class="item"
         :class="{
@@ -32,14 +35,27 @@
 </template>
 
 <script>
+  import formMixin from '@/utils/mixins/form'
+
   export default {
 
     name: 'j-dropdown',
 
     data() {
       return {
-        active: true,
+        active: false,
         selected: ''
+      }
+    },
+
+    mixins: [formMixin],
+
+    inject: {
+      jForm: {
+        default: null
+      },
+      jFormItem: {
+        default: null
       }
     },
 
@@ -51,20 +67,35 @@
 
     methods: {
       handleClick() {
-        console.log('click')
-      },
-      handleFocus() {
-        this.active = true
-      },
-      handleBlur() {
-        console.log('blur')
+        this.active = !this.active
       },
       handleItemClick(event) {
-        console.log('item click')
-        // this.selected = index
-        // this.active = false
-        // console.log(event.target.dataset.value)
+        const target = event.target
+        const { index, value } = target.dataset
+        this.active = false
+        if (this.selected === parseInt(index, 10)) return false
+        this.selected = parseInt(index, 10)
+        this.$emit('value', value)
+        this.setFormValue(value)
+        this.clearError()
+        return value
+      },
+      handleDocumentClick(e) {
+        const target = e.target
+        const dropdown = this.$refs.dropdown
+
+        if (target !== dropdown && !dropdown.contains(target)) {
+          this.active = false
+        }
       }
+    },
+
+    mounted() {
+      document.addEventListener('click', this.handleDocumentClick, false)
+    },
+
+    destroyed() {
+      document.removeEventListener('click', this.handleDocumentClick, false)
     }
   }
 </script>
@@ -74,18 +105,24 @@
 
   .j-dropdown {
     font-size: 14px;
-    padding: .78571429em 2.1em .78571429em 1em;
+    padding: 8px 1em;
     position: relative;
-    min-width: 14em;
+    max-width: 14em;
+    flex: 1 0 auto;
     cursor: pointer;
     outline: 0;
-    display: inline-block;
     color: rgba(0, 0, 0, 0.87);
     border: 1px solid rgba(34,36,38,.15);
     background-color: #fff;
     border-radius: 4px;
     box-sizing: border-box;
     z-index: 10;
+
+    .is-error & {
+      background-color: #fff6f6;
+      border-color: #e0b4b4;
+      color: #9f3a38;
+    }
     
     &.is-active {
       border-color: rgba(34,36,38,.35);

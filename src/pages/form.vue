@@ -4,6 +4,9 @@
       <j-form-item label="活动名称" prop="name">
         <j-input></j-input>
       </j-form-item>
+      <j-form-item label="活动区域" prop="area">
+        <j-dropdown :options="areas"></j-dropdown>
+      </j-form-item>
       <j-form-item label="活动风格" prop="style">
         <j-input></j-input>
       </j-form-item>
@@ -45,6 +48,10 @@
         resources: [
           { value: 0, label: '线上品牌商赞助' },
           { value: 1, label: '线下场地免费' }
+        ],
+        areas: [
+          { value: 0, label: '活动区域1' },
+          { value: 1, label: '活动区域2' }
         ],
         example1: this.highlight(`<j-form :formData="data" :errorData="error" ref="form" :rules="rules">
 

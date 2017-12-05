@@ -11,15 +11,28 @@
       }]"
       >
      </j-dropdown>
+     <pre v-html="example1"></pre>
   </div>
   
 </template>
 
 <script>
+  import highlight from '@/utils/mixins/highlight'
+
   export default {
     data() {
-      return {}
-    }
+      return {
+        example1: this.highlight(`<j-dropdown
+  :options="[
+    { value: 0, label: 'female' },
+    { value: 1, label: 'male' }
+  ]"
+  >
+</j-dropdown>`)
+      }
+    },
+
+    mixins: [highlight]
   }
 </script>
 

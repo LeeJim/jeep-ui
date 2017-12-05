@@ -48,5 +48,7 @@
 </script>
 
 <style scoped>
-
+  .j-input {
+    margin-bottom: 10px;
+  }
 </style>

@@ -103,6 +103,8 @@
   @fontColor: rgba(0,0,0,.87);
   .j-input {
     position: relative;
+    width: 100%;
+    max-width: 14em;
     font-weight: 400;
     font-style: normal;
     display: inline-flex;
@@ -129,9 +131,8 @@
     }
     
     > input {
+      width: 100%;
       margin: 0;
-      max-width: 100%;
-      flex: 1 0 auto;
       outline: 0;
       -webkit-tap-highlight-color: rgba(255,255,255,0);
       text-align: left;
@@ -141,7 +142,8 @@
       background: #fff;
       border: 1px solid rgba(34,36,38,.15);
       color: @fontColor;
-      border-radius: .28571429rem;
+      border-radius: 4px;
+      box-sizing: border-box;
       transition: box-shadow .1s ease,border-color .1s ease;
       box-shadow: none;
 
