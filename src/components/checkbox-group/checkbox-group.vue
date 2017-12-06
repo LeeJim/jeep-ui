@@ -31,7 +31,8 @@
     mixins: [formMixin],
 
     props: {
-      options: Array
+      options: Array,
+      value: [String, Number]
     },
 
     data() {

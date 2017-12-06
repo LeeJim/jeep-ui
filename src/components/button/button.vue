@@ -8,6 +8,7 @@
       disabled ? 'is-disabled' : '']"
   >
     <i v-if="loading" class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+    <i v-if="icon" :class="`fa fa-${icon}`"></i>
     <slot></slot>
   </button>
 </template>
@@ -21,7 +22,11 @@ export default {
   },
 
   props: {
-    type: String,
+    type: {
+      type: String,
+      default: 'default'
+    },
+    icon: String,
     plain: Boolean,
     disabled: Boolean,
     loading: Boolean,

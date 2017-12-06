@@ -2,7 +2,7 @@
   <div class="j-toggle" :class="{
     'is-checked': inChecked
   }" @click="handleToggle">
-    <input type="radio">
+    <input type="radio" :name="name">
     <label>
       <slot></slot>
     </label>
@@ -34,6 +34,7 @@
     },
 
     props: {
+      name: String,
       checked: Boolean
     },
 

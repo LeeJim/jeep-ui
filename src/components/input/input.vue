@@ -16,7 +16,8 @@
       :autoComplete="autoComplete" 
       :readonly="readonly" 
       :disabled="disabled"
-      @blur="handleBlur" 
+      @focus="handleFocus"
+      @blur="handleBlur"
       @change="handleChange" 
       @input="handleInput" 
       :value="jForm && jForm.formData && jForm.formData[jFormItem.prop] || value">
@@ -89,6 +90,9 @@
         const value = event.target.value
         this.clearError()
         this.$emit('change', value)
+      },
+      handleFocus(event) {
+        this.$emit('focus', event)
       }
     },
 
