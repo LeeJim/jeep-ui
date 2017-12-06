@@ -1,14 +1,12 @@
 <template>
   <div id="app">
-    <router-link :to="{ path: '/' }" class="logo">
-      <img src="http://7xnh42.com1.z0.glb.clouddn.com/lamp.png" alt="jui-logo">
-    </router-link>
+    <router-link :to="{ path: '/' }" class="logo"> jeep-ui </router-link>
     <ul class="header">
       <li v-for="item in links" :key="item.url">
         <router-link :to="{ path: '/' + item.url }">{{item.label}}</router-link>
       </li>
     </ul>
-    <iframe src="https://ghbtns.com/github-btn.html?user=leejim&repo=jui&type=star&count=true" frameborder="0" scrolling="0" width="80px" height="20px" class="button-star"></iframe>
+    <iframe src="https://ghbtns.com/github-btn.html?user=leejim&repo=jeep-ui&type=star&count=true" frameborder="0" scrolling="0" width="80px" height="20px" class="button-star"></iframe>
     <router-view />
   </div>
 </template>
@@ -43,6 +41,9 @@ export default {
       }, {
         url: 'dropdown',
         label: 'Dropdown 选择框'
+      }, {
+        url: 'date-picker',
+        label: 'DatePicker 日期选择器'
       }]
     }
   }
@@ -64,12 +65,15 @@ export default {
 
   .logo {
     z-index: 1001;
+    width: 80px;
+    height: 80px;
     position: fixed;
-    top: 10px;
+    top: 0px;
     left: 10px;
-    > img {
-      width: 60px;
-    }
+    line-height: 32px;
+    text-decoration: none;
+    color: #71ce93;
+    font-weight: bold;
   }
 
   * {
