@@ -16,6 +16,7 @@ import CheckboxGroup from './components/checkbox-group'
 import Toggle from './components/toggle'
 import Loading from './components/loading'
 import DropDown from './components/dropdown'
+import DatePicker from './components/date-picker'
 
 Vue.config.productionTip = false
 
@@ -30,6 +31,7 @@ Vue.component(CheckboxGroup.name, CheckboxGroup)
 Vue.component(Toggle.name, Toggle)
 Vue.component(Loading.name, Loading)
 Vue.component(DropDown.name, DropDown)
+Vue.component(DatePicker.name, DatePicker)
 
 /* eslint-disable no-new */
 new Vue({

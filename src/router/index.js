@@ -10,6 +10,7 @@ import CheckBox from '../pages/checkbox'
 import Toggle from '../pages/toggle'
 import Loading from '../pages/loading'
 import Dropdown from '../pages/dropdown'
+import DatePicker from '../pages/date-picker'
 
 Vue.use(Router)
 
@@ -51,5 +52,9 @@ export default new Router({
     path: '/dropdown',
     name: 'dropdown page',
     component: Dropdown
+  }, {
+    path: '/date-picker',
+    name: 'datePicker page',
+    component: DatePicker
   }]
 })
