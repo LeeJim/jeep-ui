@@ -1,62 +1,84 @@
-# jui
+# jeep-ui
+
+[🇨🇳 中文文档](https://github.com/LeeJim/jeep-ui/blob/master/README-CN.md)
+
 Practical UI for Vue.js
 
 Inspired by [Semantic-ui](http://semantic-ui.com/) and [Element-ui](http://element.eleme.io/)
 
-![image](http://7xnh42.com1.z0.glb.clouddn.com/lamp.png?imageMogr2/thumbnail/640x200>/blur/1x0/quality/75|imageslim)
+![image](http://7xnh42.com1.z0.glb.clouddn.com/suv.png?imageMogr2/thumbnail/640x200>/blur/1x0/quality/75|imageslim)
 
-# 为什么做这个UI
+## why do it?
 
-通常，开发Vue.js的项目时，UI框架首选是 饿了么的Element UI。
+Usually, the [Element UI](http://element.eleme.io/) will be my first choice to build a Vue.js project.
 
-其中，表单这一块经常用，而Element UI的表单**太繁琐**，这就是出发点。
+Unfortunately, the Element's form is not easy to use, and the form is too frequently to use.
 
-为了方便使用，最终表单的校验方式同样使用了[async-validator](https://github.com/yiminghe/async-validator)
+So, there is jeep-ui. Hope robust as jeep.
 
-# 安装
+For convenience, use the same form validator as Element, called [async-validator](https://github.com/yiminghe/async-validator).
 
-由于`jui`这个名字已经被注册，所以在npm注册的名字是`jim-ui`，
+## Install
 
 ```
-npm install jim-ui
+npm install jeep-ui
 ```
 
-# 项目规划
+## Quick start
 
-第一阶段：完成组件：(2017.11.22已完成)
+### Import all components
 
-- `Button 按钮`
-- `Input 输入框`
-- `Radio 单选框`
-- `Checkbox 复选框`
-- `Toggle 开关`
-- `Form 表单`
+```js
+import Vue from 'vue'
+import JeepUI from 'jeep-ui'
 
-第二阶段：完善Form相关的组件，包含：
+Vue.use(JeepUI)
+```
 
-- `DropDown 选择器`
-- `DatePicker 日期选择器`
+### Manually import
 
-第三阶段：继续完善其他组件： 
+```js
+import { Button } from 'jeep-ui'
 
-- `Upload 上传`
-- `Loading 加载状态`
-- `Modal 弹框`
+Vue.component(Button.name, Button)
+```
 
-(...未完待续)
+## Plan
 
-# 表单用法
+Stage1: (2017.11.22 Done)
 
-template部分：
+- Button
+- Input
+- Radio
+- Checkbox
+- Toggle
+- Form
+
+Stage2:
+
+- DropDown
+- DatePicker
+- Loading
+
+Stage3: 
+
+- Upload
+- Modal
+
+(...continue)
+
+## Usage
+
+Part of template：
 
 ```html
 <j-form :formData="data" :errorData="error" ref="form" :rules="rules">
 
-  <j-form-item label="账号" prop="name">
+  <j-form-item label="username" prop="username">
     <j-input></j-input>
   </j-form-item>
   
-  <j-form-item label="密码" prop="password">
+  <j-form-item label="password" prop="password">
     <j-input type="password"></j-input>
   </j-form-item>
   
@@ -67,7 +89,7 @@ template部分：
 </j-form>
 ```
 
-JavaScript逻辑部分：
+Part of JavaScript：
 
 ```js
 export default {
@@ -88,115 +110,113 @@ export default {
 }
 ```
 
-# 组件
+## Components
 
-### form
+### Form
 
-|参数|说明|类型|可选值|默认值|
+|Attribute|Description|Type|Accepted values|Default|
 |--|--|--|--|--|
-|label-position|标签文本的位置|string|left,right|right|
-|error-template|默认的错误模板|string|-|[prop]不能为空
-|formData|表单数据|object|-|-|
-|rules|验证规则([async-validator](https://github.com/yiminghe/async-validator))|object|-|-|
-|errorData|错误信息|object|-|-|
+|label-position|position of label|string|left,right|right|
+|error-template|template of error message|string|-|[prop] is required
+|formData|the entire data of form|object|-|-|
+|rules|validation rules of form ([async-validator](https://github.com/yiminghe/async-validator))|object|-|-|
+|errorData|message of error|object|-|-|
 
-### form-item
+### FormItem
  
-|参数|说明|类型|可选值|默认值|
+|Attribute|Description|Type|Accepted values|Default|
 |--|--|--|--|--|
-|prop|字段属性|string|-|-|
-|label|标签文本|string|-|-|
-|type|数据类型|string|-|text|
-|required|是否必填|boolean|true,false|true|
-|show-message|是否显示错误信息|boolean|true,false|true|
-|labelWidth|标签的宽度|string|-|80px|
-|contentWidth|内容的宽度|string|-|160px|
+|prop|a key of this item|string|-|-|
+|label|label|string|-|-|
+|required|whether the field is required or not|boolean|true,false|true|
+|show-message|whether the error message is show or not|boolean|true,false|true|
+|labelWidth|width of label|string|-|80px|
+|contentWidth|width of content|string|-|160px|
 
-### button
+### Button
 
-|参数|说明|类型|可选值|默认值|
+|Attribute|Description|Type|Accepted values|Default|
 |--|--|--|--|--|
-|type|类型|string|-|text|
-|plain|朴素风格|boolean|true,false|false|
-|disable|不可点击状态|boolean|true,false|false|
-|loading|加载状态|boolean|true,false|false|
-|nativeType|原生类型|string|-|button|
+|type|button type|string|-|text|
+|plain|determine whether it's a plain button|boolean|true,false|false|
+|disable| disable the button|boolean|true,false|false|
+|loading|determine whether it's loading|boolean|true,false|false|
+|nativeType|same as native button's `type`|string|-|button|
 
-### input
+### Input
 
-|参数|说明|类型|可选值|默认值|
+|Attribute|Description|Type|Accepted values|Default|
 |--|--|--|--|--|
-|type|类型|string|-|text|
-|value|数值|string／number|-|-|
-|readonly|是否只读|boolean|true,false|false|
-|disable|不可使用状态|boolean|true,false|false|
-|loading|加载状态|boolean|true,false|false|
-|prefixIcon|前置图标|string|-|-|
-|suffixIcon|后置图标|string|-|-|
-|placeholder|原生属性|string|-|-|
-|name|原生属性|string|-|-|
-|max|原生属性|string|-|-|
-|min|原生属性|string|-|-|
-|step|原生属性|string|-|-|
-|autofocus|原生属性|string|-|-|
-|form|原生属性|string|-|-|
-|disabled|原生属性|string|-|-|
-|autoComplete|原生属性|string|-|-|
-|focus|获取焦点触发事件|function|-|-|
-|blur|失去焦点触发事件|function|-|-|
-|change|数值改变时触发事件|function|-|-|
+|type|input type|string|-|text|
+|value|input value|string／number|-|-|
+|disabled| disable the input|boolean|true,false|false|
+|loading|determine whether it's loading|boolean|true,false|false|
+|prefixIcon|the prefix icon|string|-|-|
+|suffixIcon|the suffix icon|string|-|-|
+|readonly|same as native input's `readonly`|boolean|true,false|false|
+|placeholder|same as native input's `placeholder`|string|-|-|
+|name|same as native input's `name`|string|-|-|
+|max|same as native input's `max`|string|-|-|
+|min|same as native input's `min`|string|-|-|
+|step|same as native input's `step`|string|-|-|
+|autofocus|same as native input's `autofocus`|string|-|-|
+|form|same as native input's `form`|string|-|-|
+|autoComplete|same as native input's `autoComplete`|string|-|-|
+|focus|triggers when Input focus|function|-|-|
+|blur|triggers when Input blurs|function|-|-|
+|change|triggers when Input value change|function|-|-|
 
-### radio
+### Radio
 
-|参数|说明|类型|可选值|默认值|
+|Attribute|Description|Type|Accepted values|Default|
 |--|--|--|--|--|
-|name|原生属性|string|-|-|
-|readonly|是否只读|boolean|true,false|false|
-|checked|是否已选择|boolean|true,false|false|
+|name|same as native radio's `name`|string|-|-|
+|readonly|same as native radio's `readonly`|boolean|true,false|false|
+|checked|same as native radio's `checked`|boolean|true,false|false|
 
-### radio-group
+### RadioGroup
 
-|参数|说明|类型|可选值|默认值|
+|Attribute|Description|Type|Accepted values|Default|
 |--|--|--|--|--|
-|options|选项|array|-|-|
-|value|数值|string／number|-|-|
+|options|options|array|-|-|
+|value|radio value|string／number|-|-|
 
-### checkbox
+### Checkbox
 
-|参数|说明|类型|可选值|默认值|
+|Attribute|Description|Type|Accepted values|Default|
 |--|--|--|--|--|
-|name|原生属性|string|-|-|
-|readonly|是否只读|boolean|true,false|false|
-|checked|是否已选择|boolean|true,false|false|
+|name|same as native checkbox's `name`|string|-|-|
+|readonly|same as native checkbox's `readonly`|boolean|true,false|false|
+|checked|same as native checkbox's `checked`|boolean|true,false|false|
 
-### checkbox-group
+### CheckboxGroup
 
-|参数|说明|类型|可选值|默认值|
+|Attribute|Description|Type|Accepted values|Default|
 |--|--|--|--|--|
-|options|选项|array|-|-|
-|value|数值|string／number|-|-|
+|options|options|array|-|-|
+|value|checkbox value|string／number|-|-|
 
-### toggle
+### Toggle
 
-|参数|说明|类型|可选值|默认值|
+|Attribute|Description|Type|Accepted values|Default|
 |--|--|--|--|--|
-|name|原生属性|string|-|-|
-|checked|是否已选择|boolean|true,false|false|
+|name|input name of Toggle|string|-|-|
+|checked|same as native toggle's `checked`|boolean|true,false|false|
 
-### dropdown
+### Dropdown
 
-|参数|说明|类型|可选值|默认值|
+|Attribute|Description|Type|Accepted values|Default|
 |--|--|--|--|--|
-|name|原生属性|string|-|-|
-|options|选项|array|-|-|
-|defaultText|默认文案|string|-|请选择|
+|name|input name of Dropdown|string|-|-|
+|options|options|array|-|-|
+|defaultText|default text|string|-|select|
 
-### loading
+### Loading
 
-|参数|说明|类型|可选值|默认值|
+|Attribute|Description|Type|Accepted values|Default|
 |--|--|--|--|--|
-|type|图标类型|string|rotate-plane、sk-circle、sk-fading-circle、double-bounce、rect、cube、bounce|rotate-plane|
-|loading|是否正在加载|boolean|true,false|false|
-|mask|遮罩|boolean|true,false|true|
-|noText|是否显示文案|boolean|true,false|false|
-|text|文案|string|-|正在加载...|
+|type|icon type|string|rotate-plane、sk-circle、sk-fading-circle、double-bounce、rect、cube、bounce|rotate-plane|
+|loading|determine whether it's loading|boolean|true,false|false|
+|mask|whether the mask is show or not|boolean|true,false|true|
+|noText|whether the text is show or not|boolean|true,false|false|
+|text|text|string|-|loading...|

@@ -1,6 +1,6 @@
 {
-  "name": "jim-ui",
-  "version": "0.0.5",
+  "name": "jeep-ui",
+  "version": "0.0.1",
   "description": "practical UI for Vue.js",
   "author": "leejim",
   "main": "lib/jui.js",
