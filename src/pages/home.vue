@@ -2,9 +2,9 @@
   <div class="page">
     <div class="home-logo">
       <img src="http://7xnh42.com1.z0.glb.clouddn.com/suv.png" alt="logo">
-      <h1>jeep-ui</h1>
+      <h1>Jeep-UI</h1>
     </div>
-    <p>a Vue 2.0 Based Component Library</p>
+    <p>A Vue 2.0 Based Component Library</p>
     <p>Inspide By <a href="https://semantic-ui.com/" target="_blank">Semantic-ui</a> and <a href="http://element.eleme.io/" target="_blank">Element-ui</a></p>
     <p>Your star will be my best power. Thank You!</p>
 

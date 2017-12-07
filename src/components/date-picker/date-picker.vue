@@ -1,7 +1,7 @@
 
 <template>
   <div class="j-date-picker" @click="showPanel" ref="datePicker">
-    <j-input prefixIcon="calendar" readonly :value="value"></j-input>
+    <j-input prefixIcon="calendar" readonly :value="value" :placeholder="defaultText"></j-input>
     <div class="panel" v-show="active">
       <div class="panel-header">
         <button type="button" class="f-left" @click="changeYear(-1)">
@@ -69,6 +69,10 @@
       format: {
         type: String,
         default: 'YYYY-MM-DD'
+      },
+      defaultText: {
+        type: String,
+        default: '选择日期'
       }
     },
 
@@ -83,7 +87,9 @@
       allDates() {
         const date = new Date(this.now)
         const firstDate = new Date(date.setDate(1))
-        const lastDate = new Date(new Date(date.setMonth(firstDate.getMonth() + 1)).setDate(0))
+        date.setMonth(firstDate.getMonth() + 1)
+        date.setDate(0)
+        const lastDate = date
         const start = new Date(firstDate.setDate(firstDate.getDate() - firstDate.getDay()))
         const end = new Date(lastDate.setDate(lastDate.getDate() + (6 - lastDate.getDay())))
         const array = []
@@ -93,9 +99,10 @@
             array[index] = []
           }
           const className = []
-          if ((start.getMonth() + 1) === this.month) {
+          const curMonth = start.getMonth()
+          if ((curMonth + 1) === this.month) {
             className.push('current')
-          } else if ((start.getMonth() + 1) === this.month - 1 || this.month == 1 && (start.getMonth() + 1) === 12) {
+          } else if (curMonth + 1 === this.month - 1 || (this.month === 1 && curMonth + 1 === 12)) {
             className.push('pre')
           } else {
             className.push('next')
@@ -128,6 +135,7 @@
 
       handleDateClick(e) {
         const target = e.target
+        if (target.tagName.toLowerCase() !== 'div') return
         const classList = target.classList
         const date = new Date(this.now)
         date.setDate(target.innerHTML)
@@ -180,6 +188,7 @@
 <style lang="less">
   @import "../../assets/less/variables.less";
   .j-date-picker {
+    display: inline-block;
     position: relative;
 
     > .panel {
@@ -224,7 +233,7 @@
           margin-top: 6px;
 
           &:hover {
-            color: blue;
+            color: @blue;
           }
         }
 
@@ -263,15 +272,16 @@
               height: 30px;
               line-height: 30px;
               border-radius: 50%;
+              box-sizing: border-box;
 
               &.pre, &.next {
                 color: #b4bccc;
               }
 
               &.today {
-                color: #fff;
+                color: @blue;
                 font-weight: bold;
-                background-color: @blue;
+                border: 1px solid @blue;
               }
             }
 
@@ -279,6 +289,7 @@
               background-color: #f0f0f0;
               font-weight: bold;
               color: inherit;
+              border-color: transparent;
             }
           }
         }

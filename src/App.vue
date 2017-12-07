@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-link :to="{ path: '/' }" class="logo"> jeep-ui </router-link>
+    <router-link :to="{ path: '/' }" class="logo"> Jeep-UI </router-link>
     <ul class="header">
       <li v-for="item in links" :key="item.url">
         <router-link :to="{ path: '/' + item.url }">{{item.label}}</router-link>
