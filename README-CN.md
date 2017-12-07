@@ -50,7 +50,7 @@ Vue.component(Button.name, Button)
 - `Toggle 开关`
 - `Form 表单`
 
-第二阶段：完善Form相关的组件，包含：
+第二阶段：完善Form相关的组件，包含：(2017.12.6 已完成)
 
 - `DropDown 选择器`
 - `DatePicker 日期选择器`

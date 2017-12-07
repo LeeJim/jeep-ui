@@ -2,6 +2,8 @@
 
 [🇨🇳 中文文档](https://github.com/LeeJim/jeep-ui/blob/master/README-CN.md)
 
+[![npm](https://img.shields.io/npm/v/jeep-ui.svg)](https://www.npmjs.com/package/jeep-ui) [![npm](https://img.shields.io/npm/dm/jeep-ui.svg)](https://www.npmjs.com/package/jeep-ui)
+
 Practical UI for Vue.js
 
 Inspired by [Semantic-ui](http://semantic-ui.com/) and [Element-ui](http://element.eleme.io/)
@@ -54,7 +56,7 @@ Stage1: (2017.11.22 Done)
 - Toggle
 - Form
 
-Stage2:
+Stage2: (2017.12.6 Done)
 
 - DropDown
 - DatePicker
@@ -109,6 +111,10 @@ export default {
   }
 }
 ```
+
+## Browser Support
+
+Modern browsers and Internet Explorer 9+(no test).
 
 ## Components
 
@@ -220,3 +226,7 @@ export default {
 |mask|whether the mask is show or not|boolean|true,false|true|
 |noText|whether the text is show or not|boolean|true,false|false|
 |text|text|string|-|loading...|
+
+## LICENSE
+
+MIT
