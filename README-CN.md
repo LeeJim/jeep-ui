@@ -135,7 +135,8 @@ export default {
 |参数|说明|类型|可选值|默认值|
 |--|--|--|--|--|
 |type|类型|string|-|text|
-|plain|朴素风格|boolean|true,false|false|
+|size|大小|string|large,small,default|default|
+|shape|形状|string|plain,dash,quare,circle|-|
 |disable|不可点击状态|boolean|true,false|false|
 |loading|加载状态|boolean|true,false|false|
 |nativeType|原生类型|string|-|button|

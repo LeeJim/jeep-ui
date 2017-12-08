@@ -2,8 +2,8 @@
   <button 
     @click="handleClick"
     :type="nativeType"
-    :class="['j-button', `is-${type}`,
-      plain ? 'is-plain' : '',
+    :class="['j-button', `is-${type}`, `is-${shape}`,
+      ['large', 'small'].includes(size) ? `is-${size}` : '',
       loading ? 'is-loading' : '',
       disabled ? 'is-disabled' : '']"
   >
@@ -27,7 +27,8 @@ export default {
       default: 'default'
     },
     icon: String,
-    plain: Boolean,
+    shape: String,
+    size: String,
     disabled: Boolean,
     loading: Boolean,
     nativeType: {
@@ -47,28 +48,30 @@ export default {
 <style lang="less">
   @import "../../assets/less/variables.less";
   @import "../../assets/less/font-awesome/font-awesome.less";
+
   .j-button {
     cursor: pointer;
-    color: rgba(0,0,0,.6);
     display: inline-block;
-    min-height: 1em;
+    padding: 0 15px;
+    height: 32px;
     outline: 0;
-    border: none;
+    
     vertical-align: baseline;
     background: #e0e1e2 none;
     color: rgba(0,0,0,.6);
-    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-    margin-right: 4px;
-    padding: 12px 20px;
-    text-transform: none;
-    text-shadow: none;
-    font-weight: 700;
-    line-height: 1em;
-    font-style: normal;
-    text-align: center;
-    text-decoration: none;
+    border: none;
     border-radius: 4px;
     -webkit-tap-highlight-color: transparent;
+
+    line-height: 1;
+    text-shadow: none;
+    text-transform: none;
+    text-align: center;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 
     &.is-success, &.is-primary, &.is-error, &.is-warning {
       color: #fff;
@@ -77,39 +80,82 @@ export default {
     }
 
     &.is-success {
+      border: @green;
       background-color: @green;
+      &:hover {
+        background-color: darken(@green, 5%);
+      }
     }
 
     &.is-primary {
+      border-color: @blue;
       background-color: @blue;
+      &:hover {
+        background-color: darken(@blue, 5%);
+      }
     }
 
     &.is-error {
+      border: @red;
       background-color: @red;
+      &:hover {
+        background-color: darken(@red, 5%);
+      }
     }
     
     &.is-warning {
+      border: @yellow;
       background-color: @yellow;
+      &:hover {
+        background-color: darken(@yellow, 5%);
+      }
+    }
+
+    &.is-dash {
+      border-width: 1px;
+      border-style: dashed ;
+      background-color: #fff !important;
+      &.is-success {
+        color: @green;
+      }
+      &.is-primary {
+        color: @blue;
+      }
+      &.is-error {
+        color: @red;
+      }
+      &.is-warning {
+        color: @yellow;
+      }
+    }
+
+    &.is-circle {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      font-size: 16px;
+      border-radius: 50%;
+    }
+
+    &.is-square {
+      border-radius: 0 !important;
     }
 
     &.is-plain {
       box-shadow: 0 0 0 1px rgba(0,0,0,.6) inset;
-      background-color: #fff;
+      background-color: #fff !important;
       &.is-success {
         color: @green;
         box-shadow: 0 0 0 1px @green inset;
       }
-
       &.is-primary {
         color: @blue;
         box-shadow: 0 0 0 1px @blue inset;
       }
-
       &.is-error {
         color: @red;
         box-shadow: 0 0 0 1px @red inset;
       }
-      
       &.is-warning {
         color: @yellow;
         box-shadow: 0 0 0 1px @yellow inset;
@@ -119,6 +165,16 @@ export default {
     &.is-disabled {
       opacity: .45;
       cursor: not-allowed;
+    }
+
+    &.is-large {
+      padding: 0 15px;
+      height: 40px;
+    }
+
+    &.is-small {
+      padding: 0 7px;
+      height: 24px;
     }
   }
 </style>

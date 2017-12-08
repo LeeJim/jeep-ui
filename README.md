@@ -144,7 +144,8 @@ Modern browsers and Internet Explorer 9+(no test).
 |Attribute|Description|Type|Accepted values|Default|
 |--|--|--|--|--|
 |type|button type|string|-|text|
-|plain|determine whether it's a plain button|boolean|true,false|false|
+|size|size|string|large,small,default|default|
+|shape|shapre|string|plain,dash,quare,circle|-|
 |disable| disable the button|boolean|true,false|false|
 |loading|determine whether it's loading|boolean|true,false|false|
 |nativeType|same as native button's `type`|string|-|button|
