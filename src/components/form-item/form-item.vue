@@ -14,11 +14,13 @@
     </div>
     <div class="j-form-item__content" :style="contentStyle">
       <slot></slot>
-      <div
-        v-if="showMessage && validateError"
-        class="j-form-item__error">
-        {{validateError}}
-      </div>
+      <transition name="fade">
+        <div
+          v-if="showMessage && validateError"
+          class="j-form-item__error">
+          {{validateError}}
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -144,6 +146,13 @@
     margin: 0 auto 22px;
     line-height: 32px;
 
+    .fade-enter-active, .fade-leave-active {
+      transition: transform .3s
+    }
+    .fade-enter, .fade-leave-to {
+      transform: scaleY(0)
+    }
+
     &:before, &:after {
       content: "";
       display: table;
@@ -173,16 +182,21 @@
     }
 
     .j-form-item__content {
+      position: relative;
       float: left;
       text-align: left;
     }
 
     .j-form-item__error {
+      position: absolute;
+      top: 100%;
+      left: 0;
       padding-left: 6px;
-      margin-top: 4px;
+      padding-top: 4px;
       color: #9f3a38;
       text-align: left;
-      font-size: 12px;;
+      font-size: 12px;
+      line-height: 1;
     }
   }
 </style>

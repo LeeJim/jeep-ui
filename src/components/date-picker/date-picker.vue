@@ -192,12 +192,14 @@
     position: relative;
 
     > .panel {
+      z-index: 10;
       position: absolute;
       top: 100%;
       left: 0;
       margin-top: 10px;
       padding: 0 15px 15px;
       font-size: 12px;
+      background-color: #fff;
       border-radius: 4px;
       border: 1px solid #dfe4ed;
       box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);

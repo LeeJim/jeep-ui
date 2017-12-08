@@ -32,7 +32,7 @@
 
     props: {
       options: Array,
-      value: [String, Number]
+      value: [String, Array]
     },
 
     data() {
