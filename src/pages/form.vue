@@ -1,30 +1,43 @@
 <template>
   <div class="page">
-    <j-form :formData="data" :errorData="error" ref="form" :rules="rules">
-      <j-form-item label="活动名称" prop="name">
-        <j-input></j-input>
-      </j-form-item>
-      <j-form-item label="活动区域" prop="area">
-        <j-dropdown :options="areas"></j-dropdown>
-      </j-form-item>
-      <j-form-item label="活动风格" prop="style">
-        <j-input></j-input>
-      </j-form-item>
-      <j-form-item label="特殊资源" prop="resource">
-        <j-radio-group :options="resources"></j-radio-group>
-      </j-form-item>
-      <j-form-item label="即时配送" prop="delivery">
-        <j-toggle ></j-toggle>
-      </j-form-item>
-      <j-form-item label="活动性质" prop="type">
-        <j-checkbox-group :options="types"></j-checkbox-group>
-      </j-form-item>
-      <j-form-item>
-        <j-button @click="submit">submit</j-button>
-      </j-form-item>
-      <pre v-html="example1">
-      </pre>
-    </j-form>
+
+    <h3>Form 表单</h3>
+
+    <div class="j-row">
+      <div class="j-col">
+        <card meta="Base">
+          <j-form :formData="data" :errorData="error" ref="form" :rules="rules">
+            <j-form-item label="活动名称" prop="name">
+              <j-input></j-input>
+            </j-form-item>
+            <j-form-item label="活动区域" prop="area">
+              <j-dropdown :options="areas"></j-dropdown>
+            </j-form-item>
+            <j-form-item label="活动风格" prop="style">
+              <j-input></j-input>
+            </j-form-item>
+            <j-form-item label="特殊资源" prop="resource">
+              <j-radio-group :options="resources"></j-radio-group>
+            </j-form-item>
+            <j-form-item label="即时配送" prop="delivery">
+              <j-toggle ></j-toggle>
+            </j-form-item>
+            <j-form-item label="活动性质" prop="type">
+              <j-checkbox-group :options="types"></j-checkbox-group>
+            </j-form-item>
+            <j-form-item>
+              <j-button @click="submit">submit</j-button>
+            </j-form-item>
+          </j-form>
+          <template slot="meta">
+            Base Usage
+          </template>
+          <template slot="code">
+            <pre v-html="example1"></pre>
+          </template>
+        </card>
+      </div>
+    </div>
   </div>
 </template>
 

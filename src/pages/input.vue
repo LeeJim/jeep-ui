@@ -2,28 +2,53 @@
   <div class="page">
     <h2>Input 输入框</h2>
 
-    <h3>基本用法</h3>
-    <j-input placeholder="请输入内容"></j-input>
-    <pre v-html="example1">
-    </pre>
+    <div class="j-row">
+      <div class="j-col">
+        <card meta="Base">
+          <j-input placeholder="请输入内容"></j-input>
+          <template slot="meta">
+            Base input
+          </template>
+          <template slot="code">
+            <pre v-html="example1"></pre>
+          </template>
+        </card>
 
-    <h3>Disabled</h3>
-    <j-input placeholder="请输入内容" disabled></j-input>
-    <pre v-html="example2">
-    </pre>
+        <card meta="Loading">
+          <j-input placeholder="正在加载..." loading></j-input>
+          <template slot="meta">
+            Loading status input
+          </template>
+          <template slot="code">
+            <pre v-html="example3"></pre>
+          </template>
+        </card>
+      </div>
+      <div class="j-col">
+        <card meta="Disabled">
+          <j-input placeholder="请输入内容" disabled></j-input>
+          <template slot="meta">
+            Disabled input
+          </template>
+          <template slot="code">
+            <pre v-html="example2"></pre>
+          </template>
+        </card>
 
-    <h3>Loading</h3>
-    <j-input placeholder="正在加载..." loading></j-input>
-    <pre v-html="example3">
-    </pre>
-
-    <h3>Icon</h3>
-    <j-input placeholder="请输入内容" prefix-icon="filter"></j-input>
-    <j-input placeholder="请输入内容" prefix-icon="edit"></j-input>
-    <j-input placeholder="请输入内容" suffix-icon="exclamation-circle"></j-input>
-    <j-input placeholder="请输入内容" suffix-icon="search"></j-input>
-    <pre v-html="example4">
-    </pre>
+        <card meta="Icon">
+          <j-input placeholder="请输入内容" prefix-icon="filter"></j-input>
+          <j-input placeholder="请输入内容" prefix-icon="edit"></j-input>
+          <j-input placeholder="请输入内容" suffix-icon="exclamation-circle"></j-input>
+          <j-input placeholder="请输入内容" suffix-icon="search"></j-input>
+          <template slot="meta">
+            Prefix icon and suffix icon in the input
+          </template>
+          <template slot="code">
+            <pre v-html="example4"></pre>
+          </template>
+        </card>
+      </div>
+    </div>
   </div>
 </template>
 

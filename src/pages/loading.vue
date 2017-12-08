@@ -1,45 +1,124 @@
 <template>
   <div class="page">
-    <p>样式来源： <a href="https://github.com/tobiasahlin/SpinKit" target="_blank">SpinKit</a></p>
-    <h3>基本使用</h3>
+    <p class="reference">Thanks to：<a href="https://github.com/tobiasahlin/SpinKit" target="_blank">SpinKit</a></p>
 
-    <j-loading :loading="loading1"></j-loading>
-    <pre v-html="highlight(example1)"></pre>
+    <h3>Loading</h3>
 
-    <h3>取消遮罩</h3>
-    <j-loading :loading="loading1" :mask="false"></j-loading>
-    <pre v-html="highlight(example2)"></pre>
+    <div class="j-row">
+      <div class="j-col">
+        <card meta="Base">
+          <j-loading :loading="loading1"></j-loading>
+          <template slot="meta">
+            Base usage
+          </template>
+          <template slot="code">
+            <pre v-html="highlight(example1)"></pre>
+          </template>
+        </card>
 
-    <h3>不需要文字</h3>
-    <j-loading :loading="loading1" :no-text="true"></j-loading>
-    <pre v-html="highlight(example3)"></pre>
+        <card meta="Mask">
+          <j-loading :loading="loading1" :mask="false"></j-loading>
+          <template slot="meta">
+            Remove mask
+          </template>
+          <template slot="code">
+            <pre v-html="highlight(example2)"></pre>
+          </template>
+        </card>
 
-    <h3>修改文字</h3>
-    <j-loading :loading="loading1" text="正在拼命加载中..."></j-loading>
-    <pre v-html="highlight(example4)"></pre>
+        <card meta="Remove Text">
+          <j-loading :loading="loading1" :no-text="true"></j-loading>
+          <template slot="meta">
+            Remove Text
+          </template>
+          <template slot="code">
+            <pre v-html="highlight(example3)"></pre>
+          </template>
+        </card>
 
-    <h3>多种风格</h3>
+        <card meta="Change Text">
+          <j-loading :loading="loading1" text="正在拼命加载中..."></j-loading>
+          <template slot="meta">
+            Change Text
+          </template>
+          <template slot="code">
+            <pre v-html="highlight(example4)"></pre>
+          </template>
+        </card>
+      </div>
 
-    <j-loading  :loading="loading1" type="double-bounce"></j-loading>
-    <pre v-html="highlight(example5)"></pre>
+      <div class="j-col">
+          <card meta="Style">
+            <j-loading  :loading="loading1" type="double-bounce"></j-loading>
+            <template slot="meta">
+              Style <span>double-bounce</span>
+            </template>
+            <template slot="code">
+              <pre v-html="highlight(example5)"></pre>
+            </template>
+          </card>
 
-    <j-loading  :loading="loading1" type="rect"></j-loading>
-    <pre v-html="highlight(example6)"></pre>
+          <card meta="Style">
+            <j-loading  :loading="loading1" type="rect"></j-loading>
+            <template slot="meta">
+              Style <span>rect</span>
+            </template>
+            <template slot="code">
+              <pre v-html="highlight(example6)"></pre>
+            </template>
+          </card>
 
-    <j-loading  :loading="loading1" type="cube"></j-loading>
-    <pre v-html="highlight(example7)"></pre>
+          <card meta="Style">
+            <j-loading  :loading="loading1" type="cube"></j-loading>
+            <template slot="meta">
+              Style <span>cube</span>
+            </template>
+            <template slot="code">
+              <pre v-html="highlight(example7)"></pre>
+            </template>
+          </card>
 
-    <j-loading  :loading="loading1" type="scaleout"></j-loading>
-    <pre v-html="highlight(example8)"></pre>
+          <card meta="Style">
+            <j-loading  :loading="loading1" type="scaleout"></j-loading>
+            <template slot="meta">
+              Style <span>scaleout</span>
+            </template>
+            <template slot="code">
+              <pre v-html="highlight(example8)"></pre>
+            </template>
+          </card>
 
-    <j-loading  :loading="loading1" type="bounce"></j-loading>
-    <pre v-html="highlight(example9)"></pre>
+          <card meta="Style">
+            <j-loading  :loading="loading1" type="bounce"></j-loading>
+            <template slot="meta">
+              Style <span>bounce</span>
+            </template>
+            <template slot="code">
+              <pre v-html="highlight(example9)"></pre>
+            </template>
+          </card>
 
-    <j-loading  :loading="loading1" type="sk-circle"></j-loading>
-    <pre v-html="highlight(example10)"></pre>
+          <card meta="Style">
+            <j-loading  :loading="loading1" type="sk-circle"></j-loading>
+            <template slot="meta">
+              Style <span>sk-circle</span>
+            </template>
+            <template slot="code">
+              <pre v-html="highlight(example10)"></pre>
+            </template>
+          </card>
 
-    <j-loading  :loading="loading1" type="sk-fading-circle"></j-loading>
-    <pre v-html="highlight(example11)"></pre>
+          <card meta="Style">
+            <j-loading  :loading="loading1" type="sk-fading-circle"></j-loading>
+            <template slot="meta">
+              Style <span>sk-fading-circle</span>
+            </template>
+            <template slot="code">
+              <pre v-html="highlight(example11)"></pre>
+            </template>
+          </card>
+      </div>
+    </div>
   </div>
 </template>
 

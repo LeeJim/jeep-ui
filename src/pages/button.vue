@@ -1,40 +1,88 @@
 <template>
   <div class="page">
     <h2>Button 按钮</h2>
-    <p>常规的操作按钮</p>
 
-    <h3>正常状态</h3>
+    <div class="j-row">
+      <div class="j-col">
+        <card meta="Type">
+          <j-button>Default</j-button>
+          <j-button type="primary">Primary</j-button>
+          <j-button type="success">Success</j-button>
+          <j-button type="error">Error</j-button>
+          <j-button type="warning">Warning</j-button>
+          <template slot="meta">
+            Type of Buttons: <span>default</span> <span>primary</span> <span>success</span> <span>error</span> <span>warning</span>
+          </template>
+          <template slot="code">
+            <pre v-html="eType"></pre>
+          </template>
+        </card>
 
-    <j-button>默认状态</j-button>
-    <j-button type="primary">primary</j-button>
-    <j-button type="success">success</j-button>
-    <j-button type="error">error</j-button>
-    <j-button type="warning">warning</j-button>
-    <pre v-html="example1">
-    </pre>
+        <card meta="Type">
+          <j-button type="primary" size="large">Large</j-button>
+          <j-button type="primary">Default</j-button>
+          <j-button type="primary" size="small">Small</j-button>
+          <template slot="meta">
+            Size of Buttons: <span>Large</span> <span>Default</span> <span>Small</span>
+          </template>
+          <template slot="code">
+            <pre v-html="eSize"></pre>
+          </template>
+        </card>
 
-    <h3>plain</h3>
-    <j-button plain>默认状态</j-button>
-    <j-button plain type="primary">primary</j-button>
-    <j-button plain type="success">success</j-button>
-    <j-button plain type="error">error</j-button>
-    <j-button plain type="warning">warning</j-button>
-    <pre v-html="example2">
-    </pre>
+        <card meta="Disabled">
+          <j-button disabled>Default</j-button>
+          <j-button disabled type="primary">Primary</j-button>
+          <j-button disabled type="success">Success</j-button>
+          <j-button disabled type="error">Error</j-button>
+          <j-button disabled type="warning">Warning</j-button>
+          <template slot="meta">
+            To mark a button as disabled
+          </template>
+          <template slot="code">
+            <pre v-html="eDisabled"></pre>
+          </template>
+        </card>
+      </div>
+      <div class="j-col">
+        <card meta="Shape">
+          <j-button type="primary" shape="plain">plain</j-button>
+          <j-button type="primary" shape="dash">dash</j-button>
+          <j-button type="primary" shape="square">square</j-button>
+          <j-button type="primary" shape="circle" icon="search"></j-button>
+          <template slot="meta">
+            Shape of Buttons: <span>plain</span> <span>dash</span> <span>square</span> <span>circle</span> 
+          </template>
+          <template slot="code">
+            <pre v-html="eShape"></pre>
+          </template>
+        </card>
 
-    <h3>disabled</h3>
-    <j-button disabled>默认状态</j-button>
-    <j-button disabled type="primary">primary</j-button>
-    <j-button disabled type="success">success</j-button>
-    <j-button disabled type="error">error</j-button>
-    <j-button disabled type="warning">warning</j-button>
-    <pre v-html="example3">
-    </pre>
+        <card meta="Loading">
+          <j-button loading type="primary">Loading</j-button>
+          <template slot="meta">
+            Loading status button
+          </template>
+          <template slot="code">
+            <pre v-html="eLoading"></pre>
+          </template>
+        </card>
 
-    <h3>loading</h3>
-    <j-button loading type="primary">加载中</j-button>
-    <pre v-html="example4">
-    </pre>
+        <card meta="Icon">
+          <j-button type="primary" icon="download"></j-button>
+          <j-button type="primary" icon="paper-plane"></j-button>
+          <j-button type="success" icon="search"></j-button>
+          <j-button type="warning" icon="reply"></j-button>
+          <template slot="meta">
+            <span>Button</span> components can contain an <span>Icon</span>
+            <p><strong>Icon name reference: </strong><a href="http://fontawesome.io/icons/">Font Awesome</a></p>
+          </template>
+          <template slot="code">
+            <pre v-html="eIcon"></pre>
+          </template>
+        </card>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -45,22 +93,28 @@
     /* eslint-disable */
     data() {
       return {
-        example1: this.highlight(`<j-button>默认状态</j-button>
+        eType: this.highlight(`<j-button>Default</j-button>
 <j-button type="primary">primary</j-button>
 <j-button type="success">success</j-button>
 <j-button type="error">error</j-button>
 <j-button type="warning">warning</j-button>`),
-        example2: this.highlight(`<j-button disabled>默认状态</j-button>
+        eShape: this.highlight(`<j-button type="primary" shape="plain">plain</j-button>
+<j-button type="primary" shape="dash">dash</j-button>
+<j-button type="primary" shape="square">square</j-button>
+<j-button type="primary" shape="circle" icon="search"></j-button>`),
+        eDisabled: this.highlight(`<j-button disabled>Default</j-button>
 <j-button disabled type="primary">primary</j-button>
 <j-button disabled type="success">success</j-button>
 <j-button disabled type="error">error</j-button>
 <j-button disabled type="warning">warning</j-button>`),
-        example3: this.highlight(`<j-button disabled>默认状态</j-button>
-<j-button disabled type="primary">primary</j-button>
-<j-button disabled type="success">success</j-button>
-<j-button disabled type="error">error</j-button>
-<j-button disabled type="warning">warning</j-button>`),
-        example4: this.highlight(`<j-button loading type="primary">加载中</j-button>`)
+        eLoading: this.highlight(`<j-button loading type="primary">Loading</j-button>`),
+        eIcon: this.highlight(`<j-button type="primary" icon="download"></j-button>
+<j-button type="primary" icon="paper-plane"></j-button>
+<j-button type="success" icon="search"></j-button>
+<j-button type="warning" icon="reply"></j-button>`),
+        eSize: this.highlight(`<j-button type="primary" size="large">Large</j-button>
+<j-button type="primary">Default</j-button>
+<j-button type="primary" size="small">Small</j-button>`)
       }
     },
 
@@ -69,4 +123,7 @@
 </script>
 
 <style lang="less">
+  .j-button {
+    margin-bottom: 10px;
+  }
 </style>

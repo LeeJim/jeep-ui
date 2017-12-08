@@ -18,6 +18,8 @@ import Loading from './components/loading'
 import DropDown from './components/dropdown'
 import DatePicker from './components/date-picker'
 
+import Card from './components/card'
+
 Vue.config.productionTip = false
 
 Vue.component(Input.name, Input)
@@ -32,6 +34,8 @@ Vue.component(Toggle.name, Toggle)
 Vue.component(Loading.name, Loading)
 Vue.component(DropDown.name, DropDown)
 Vue.component(DatePicker.name, DatePicker)
+
+Vue.component('card', Card)
 
 /* eslint-disable no-new */
 new Vue({

@@ -2,11 +2,20 @@
   <div class="page">
     <h2>Toggle 开关</h2>
 
-    <h3>基本用法</h3>
-    <j-toggle v-model="selected">接受协议</j-toggle>
-    <p> > 您{{selected ? '接受了' : '不接受'}}协议</p>
-    <pre v-html="example1">
-    </pre>
+    <div class="j-row">
+      <div class="j-col">
+        <card meta="Base">
+          <j-toggle v-model="selected">接受协议</j-toggle>
+          <p> > 您{{selected ? '接受了' : '不接受'}}协议</p>
+          <template slot="meta">
+            Base usage
+          </template>
+          <template slot="code">
+            <pre v-html="example1"></pre>
+          </template>
+        </card>
+      </div>
+    </div>
   </div>
 </template>
 

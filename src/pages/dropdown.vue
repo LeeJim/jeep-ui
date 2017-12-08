@@ -1,17 +1,29 @@
 <template>
   <div class="page">
-    <h3>基本使用</h3>
-    <j-dropdown
-      :options="[{
-        label: 'female',
-        value: 0
-        },{
-        label: 'male',
-        value: 1
-      }]"
-      >
-     </j-dropdown>
-     <pre v-html="example1"></pre>
+    <h3>Dropdown 选择框</h3>
+
+    <div class="j-row">
+      <div class="j-col">
+        <card meta="Base">
+          <j-dropdown
+            :options="[{
+              label: 'female',
+              value: 0
+              },{
+              label: 'male',
+              value: 1
+            }]"
+            >
+           </j-dropdown>
+          <template slot="meta">
+            Base usage
+          </template>
+          <template slot="code">
+            <pre v-html="example1"></pre>
+          </template>
+        </card>
+      </div>
+    </div>
   </div>
   
 </template>
