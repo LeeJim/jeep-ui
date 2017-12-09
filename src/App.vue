@@ -18,6 +18,9 @@
         <router-view />
       </div>
     </div>
+    <div class="footer">
+      <a href="https://github.com/LeeJim/jeep-ui" target="_blank" class="github">Jeep-UI</a>
+    </div>
     <iframe :src="starUrl" frameborder="0" scrolling="0" width="80px" height="20px" class="button-star"></iframe>
   </div>
 </template>
@@ -177,5 +180,23 @@ export default {
     color: #6a737d;
     border-left: 0.25em solid #dfe2e5;
     background-color: #fcfcfc;
+  }
+
+  .footer {
+    margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+    .github {
+      color: #bfbfbf;
+      padding-left: 24px;
+      text-decoration: none;
+      background: url('./assets/github.png') no-repeat left center;
+      background-size: contain;
+
+      &:hover {
+        color: #458774;
+        background-image: url('./assets/github-active.png');
+      }
+    }
   }
 </style>
