@@ -228,6 +228,13 @@ Modern browsers and Internet Explorer 9+(no test).
 |noText|whether the text is show or not|boolean|true,false|false|
 |text|text|string|-|loading...|
 
+### DatePicker
+
+|Attribute|Description|Type|Accepted values|Default|
+|--|--|--|--|--|
+|format|format date string|string|-|YYYY-DD-MM|
+|defaultText|similar to input's placeholder|string|-|choose a date|
+
 ## LICENSE
 
 MIT

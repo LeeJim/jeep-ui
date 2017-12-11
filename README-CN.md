@@ -219,3 +219,10 @@ export default {
 |mask|遮罩|boolean|true,false|true|
 |noText|是否显示文案|boolean|true,false|false|
 |text|文案|string|-|正在加载...|
+
+### DatePicker
+
+|参数|说明|类型|可选值|默认值|
+|--|--|--|--|--|
+|format|格式化日期|string|-|YYYY-DD-MM|
+|defaultText|默认文本|string|-|请选择日期|
