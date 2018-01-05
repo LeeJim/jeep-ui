@@ -9,7 +9,7 @@ import Checkbox from './components/checkbox'
 import CheckboxGroup from './components/checkbox-group'
 import Toggle from './components/toggle'
 
-const install = function(Vue, opts = {}) {
+const install = (Vue) => {
   if (install.installed) return
 
   Vue.component(Input.name, Input)
@@ -35,5 +35,3 @@ module.exports = {
   CheckboxGroup,
   Toggle
 }
-
-module.exports.default = module.exports;
