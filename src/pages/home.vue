@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="home-logo">
-      <img src="http://7xnh42.com1.z0.glb.clouddn.com/suv.png" alt="logo">
+      <img src="http://img.africans.cn/suv.png" alt="logo">
       <h1>Jeep-UI</h1>
     </div>
     <p>A Vue 2.0 Based Component Library</p>
