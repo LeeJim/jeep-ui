@@ -8,7 +8,7 @@ Practical UI for Vue.js
 
 Inspired by [Semantic-ui](http://semantic-ui.com/) and [Element-ui](http://element.eleme.io/)
 
-![image](http://7xnh42.com1.z0.glb.clouddn.com/suv.png?imageMogr2/thumbnail/640x200>/blur/1x0/quality/75|imageslim)
+![image](http://img.africans.cn/suv.png?imageMogr2/thumbnail/640x200>/blur/1x0/quality/75|imageslim)
 
 ## why do it?
 
