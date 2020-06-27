@@ -2,7 +2,7 @@
   <div id="app">
     <div class="header">
       <router-link :to="{ path: '/' }">
-        <img class="logo" src="http://7xnh42.com1.z0.glb.clouddn.com/suv.png" alt="logo">
+        <img class="logo" src="http://img.africans.cn/suv.png" alt="logo">
         <span class="name">Jeep-UI</span>
       </router-link>
     </div>
